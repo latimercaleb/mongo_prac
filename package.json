@@ -1,0 +1,16 @@
+{
+  "name": "mongo_prac",
+  "version": "1.0.0",
+  "description": "Mongo practice",
+  "main": "playground-1.mongodb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.5.0"
+  },
+  "type": ["module", "commonjs"]
+}
