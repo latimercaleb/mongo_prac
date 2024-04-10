@@ -1,9 +1,8 @@
-const { MongoClient } = require("mongodb");
-const client = new MongoClient('mongodb://localhost:27017');
+    // Assignment 2 insert company data to a collection
+    // Use insertOne & insertMany
+    // Insert duplicate ID data, fix it via unordered inserts
+    // Do an insert with jorunaling or no journaling
 
-async function run() {
-  try {
-    console.log('in');
     const database = client.db('exercise2');
     const fighters = database.collection('champions');
     // console.log(movies);
@@ -25,13 +24,4 @@ async function run() {
       style: 'saber'
     };
     const resp = await fighters.insertOne(queryWithJournal, {w: 1, j: true});
-    console.log(resp);
-  } catch(e) {
-    console.error('Failed somehow')
-    console.log(e)
-  }finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
+
