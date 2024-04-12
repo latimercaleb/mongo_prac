@@ -27,7 +27,18 @@ async function run() {
 
         const resp10 = await tv.find({runtime: {$in: [30, 42]}}).toArray(); // all values not in the list
         // console.log(resp10)
-	} catch (e) {
+
+        // Logical operators
+        const a = await tv.find({$or: [{weight: {$lt: 90}},{weight: {$gt: 80}}]}).toArray(); // Data with that fits any condition in the []
+        console.log(a.length) // Can change to $nor for neither of those conditions, $and for matching all conditions, and $not is simply inverts an expression but $nor and $ne are better short hands
+	
+        // Element operators 
+        const b = await tv.find({type: {$exists: true, $eq: "Scripted"}}).toArray(); // Implicit $and such that a field exists AND equals a value
+        console.log(b.length)
+
+        const c = await tv.find({runtime: {$type: "number"}}).toArray(); // Query only data that has a field of a certain type
+        console.log(c.length)
+    } catch (e) {
 		console.error('Failed somehow');
 		console.log(e);
 	} finally {

@@ -44,9 +44,9 @@ db.getCollection('sales').aggregate([
 ]);
 
 
-db.runCommand({collMod: {"posts", validator: {
-// Post validator schema in here to
-}}})
+// db.runCommand({collMod: {"posts", validator: {
+// // Post validator schema in here to
+// }}})
 
 /* global use, db */
 // MongoDB Playground
@@ -129,5 +129,3 @@ db.createCollection("posts", {validator: { $jsonSchema: {
         }
     }
 }}})
-
-db.ri
