@@ -91,3 +91,43 @@ db.createCollection(collection);
 
 // More information on the `createCollection` command can be found at:
 // https://www.mongodb.com/docs/manual/reference/method/db.createCollection/
+db.createCollection("posts", {validator: { $jsonSchema: {
+	bsonType: 'object',
+	required: [ // Required fields to be valid
+		"title", "text", "creator", "comments"
+	], 
+	properties: { // Required types and descriptions of types to be valid
+        title: {
+            bsonType: "string",
+            description: "Must be a text string and is required"
+        }, 
+        text: {
+            bsonType: "string",
+            description: "Must be a text string and is required"
+        },
+        creator: {
+            bsonType: "objectId",
+            description: "Must be an objectId and is required"
+        },
+        comments: {
+            bsonType: "array",
+            description: "Must be an array and is required",
+            items: {
+                bsonType: "object",
+                required: ["text", "author"],
+                properties: {
+                    text: {
+                        bsonType: "string",
+                        description: "Must be a text string and is required"
+                    },
+                    author: {
+                        bsonType: "objectId",
+                        description: "Must be a text string and is required"
+                    }
+                }
+            }
+        }
+    }
+}}})
+
+db.ri
